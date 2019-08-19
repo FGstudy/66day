@@ -1,0 +1,192 @@
+@font-face {
+	font-family:"montserrat";
+	src: url("font/Montserrat-Regular.ttf")
+}
+
+@font-face {
+	font-family:"montserrat-light";
+	src: url("font/Montserrat-Light.ttf")
+}
+
+@font-face {
+	font-family:"montserrat-extralight";
+	src: url("font/Montserrat-ExtraLight.ttf")
+}
+
+@font-face {
+	font-family:"myriad";
+	src: url("font/Myriad Web Pro.ttf")
+}
+
+body {
+	font-family: montserrat-light;
+}
+
+h1,h2,h3,h4,p,a {
+	font-family: montserrat-extralight;
+	font-weight: 100;
+}
+
+
+.header-article h1 {
+	font-size: 62px;
+}
+
+.header-article p {
+	font-size: 20px;
+	line-height: 32px;
+	opacity: 0.5;
+}
+
+.header-signup h3 {
+	font-size: 16px;
+	letter-spacing: 150;
+	line-height: 28px;
+}
+
+.header-signup span {
+	font-size: 12xpx;
+	letter-spacing: 150;
+	opacity: 0.5;
+}
+
+.signup-main input {
+	font-size: 14px;
+}
+
+.feature-title {
+	font-size: 14px;
+}
+
+.feature-title h2{
+	font-size: 42px;
+	line-height: 60px;
+}
+
+.feature-list .list-intro h3 {
+	font-family: montserrat-light;
+	font-size: 20px; 
+	font-weight: 400;
+}
+
+.feature-list .list-intro p {
+	font-size: 16px;
+	line-height: 26px;
+}
+
+.guild-leftcol h2 {
+	font-size: 42px;
+	line-height: 52px;
+}
+
+.guild-leftcol p {
+	font-size: 18px;
+	line-height: 28px;
+	opacity: 0.6;
+}
+
+.guild-leftcol button {
+	font-size: 12px;
+	letter-spacing: 0.8px;
+	color: #000000;
+}
+
+.products h2 {
+	font-size: 42px;
+}
+
+.product-container .product-col p {
+	font-size: 16px;
+	line-height: 26px;
+}
+
+.news-text h3 {
+	font-size: 20px;
+	line-height: 32px;
+	font-weight: 500;
+}
+
+.news-text p {
+	font-size: 16px;
+	line-height:28px;
+}
+
+.crew .crew-title h2 {
+	font-size: 42px;
+	
+}
+
+.crew .crew-title p {
+	font-size: 18px;
+	line-height: 28px;
+}
+
+.crew-info .info-text h3 {
+	font-size: 20px;
+}
+
+.crew-info .info-text p {
+	font-size: 12px;
+	letter-spacing: 1.2px;
+	opacity: 0.5;
+} 
+
+.contacts {
+	font-family: myriad;
+}
+
+.contact-col-left h3 {
+	font-size: 16px;
+	letter-spacing: 1.06px;
+	font-weight: 600;
+}
+
+.contact-col-left input {
+	font-size: 14px;
+	opacity: 0.5;
+}
+
+.contact-col-left textarea {
+	font-size: 14px;
+	opacity: 0.5;
+}
+
+.contact-col-left button {
+	color: #fff;
+	font-size: 12px;
+	letter-spacing: 0.8px;
+}
+
+.contact-col-right h2 {
+	font-size: 42px;
+	font-weight: 500;
+}
+
+.contact-col-right p {
+	font-size: 16px;
+	line-height: 26px;
+	opacity: 0.7;
+}
+
+.contact-col-right a {
+	color: #141414;
+	font-size: 16px;
+	line-height: 26px;
+}
+
+.footer-col h3 {
+	font-size: 14px;
+	letter-spacing: 0.93px;
+}
+
+.footer-col a {
+	font-size: 16px;
+	opacity: 0.5;
+	
+}
+
+.footer-container .last-col p {
+	font-size: 18px;
+	line-height: 28px;
+	opacity: 0.5;
+}
