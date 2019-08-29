@@ -1,0 +1,132 @@
+@font-face {
+	font-family:"myriad";
+	src: url("font/MyriadPro-Regular.otf")
+}
+
+body {
+	font-family: myriad sans-serif;
+}
+
+.aside-col-info h3 {
+	font-size: 12px;
+	line-height: 40px;
+	color: #5b6779;
+}
+
+.aside-col-info a {
+	font-size: 14px;
+	line-height: 36px;
+	color: #b7c0cd;
+}
+
+.info-text .tips-num {
+	color: #fff;
+}
+
+.text-bottom {
+	color: #fff;
+}
+
+.main .header h2 {
+	font-size: 24px
+}
+
+.header .user-intro .user-name {
+	font-size: 16px;
+	color: #2399f1;
+}
+
+.user-intro .user-pos {
+	font-size: 14px;
+	color: #b5b5b5;
+}
+
+.main-leftcol .search-box {
+	font-size: 14px;
+	color: #9fa9ba;
+}
+
+.main-leftcol {
+	font-size: 14px;
+}
+
+.main-leftcol .activetext .user-name {
+	font-size: 16px;
+	color: #66b0f4;
+}
+
+.main-leftcol .user-name {
+	color: #585d68;
+}
+
+
+
+.main-leftcol .user-time {
+	line-height: 36px;
+	color: #7f8fa4;
+}
+
+.main-cols .text-content {
+	font-size: 12px;
+	line-height: 19px;
+}
+
+.main-cols .text-content .content-num {
+	font-size: 14px;
+	color: #fff;
+}
+
+.main-rightcol .rightcol-title .title-name {
+	font-size: 16px;
+	color: #585d68;
+}
+
+.title-btns .btn-date {
+	font-size: 14px;
+	font-weight: 600;
+	line-height: 30px;
+	color: #56688a;
+	text-align: center;
+}
+
+.article-info .article-header {
+	font-size: 16px;
+	color: #585d68;
+}
+
+.article-header .article-time {
+	font-size: 14px;
+	line-height: 36px;
+	color: #7f8fa4;
+}
+
+.article-info .article-body {
+	font-size: 12px;
+	line-height: 19px;
+	color: #585d68;
+}
+
+.includeimg .article-date {
+	font-size: 14px;
+	line-height: 19px;
+	color: #7f8fa4;
+	text-align: center;
+}
+
+.newmes .article-title {
+	font-size: 14px;
+	line-height: 19px;
+	color: #5eb4f5;
+	text-align: center;
+}
+
+.newmes .add-box .add-btn {
+	font-size: 16px;
+	color: #9fa9ba;
+}
+
+.newmes .add-box .add-content {
+	font-size: 13px;
+	line-height: 19px;
+	color: #585d68;
+}
