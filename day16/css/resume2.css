@@ -1,0 +1,38 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+
+.wrap {
+	width: 1000px;
+	margin: 0 auto;
+	line-height: 2em;
+}
+
+.info-row {
+	display: flex;
+	justify-content: space-between;
+}
+
+.info-row div {
+	width: 300px;
+}
+
+.info-row .website {
+	width: 600px;
+}
+
+.info-row .greet {
+	width: 100px;
+	text-align: center;
+}
+
+.info-row .hobby {
+	width: 100px;
+	text-align: center;
+}
+
+.info-row div span:first-child {
+	font-weight: bold;
+}
+
