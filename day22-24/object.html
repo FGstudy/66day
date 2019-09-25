@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>对象练习</title>
+	</head>
+	<body>
+		<script>
+			var tree = {
+			    "id": 0,
+			    "name": "root",
+			    "left": {
+			        "id": 1,
+			        "name": "Simon",
+			        "left": {
+			            "id": 3,
+			            "name": "Carl",
+			            "left": {
+			                "id": 7,
+			                "name": "Lee",
+			                "left": {
+			                    "id": 11,
+			                    "name": "Fate"
+			                }
+			            },
+			            "right": {
+			                "id": 8,
+			                "name": "Annie",
+			                "left": {
+			                    "id": 12,
+			                    "name": "Saber"
+			                }
+			            }
+			        },
+			        "right": {
+			            "id": 4,
+			            "name": "Tony",
+			            "left": {
+			                "id": 9,
+			                "name": "Candy"
+			            }
+			        }
+			    },
+			    "right": {
+			        "id": 2,
+			        "name": "right",
+			        "left": {
+			            "id": 5,
+			            "name": "Carl",
+			        },
+			        "right": {
+			            "id": 6,
+			            "name": "Carl",
+			            "right": {
+			                "id": 10,
+			                "name": "Kai"
+			            }        
+			        }
+			    }
+			}
+			
+			// 假设id和name均不会重复，根据输入name找到对应的id
+			function findIdByName(name) {
+				var id;
+				function node(obj){
+					if(obj){
+						if(obj.name === name){
+							id = obj.id
+						}
+					node(obj.left);
+					node(obj.right);
+					}
+				}
+				node(tree);
+				return id;
+			}
+			console.log("candy的ID是" + findIdByName("Candy"));
+			// 假设id和name均不会重复，根据输入id找到对应的name
+			function findNameById(id) {
+				var name;
+				function node(obj){
+					if(obj){
+						if(obj.id === id){
+							name = obj.name
+						}
+					node(obj.left);
+					node(obj.right);
+					}
+				}
+				node(tree);
+				return name;
+			
+			}
+			console.log("ID是10的" + findNameById(10));
+			// 把这个对象中所有的名字以“前序遍历”的方式全部输出到console中
+			function getListWithDLR() {
+				var arr = [];
+				var preOrder = function (node){
+					if(node){
+						arr.push(node.name);
+						preOrder(node.left);
+						preOrder(node.right);
+					}
+					
+				}
+				preOrder(tree);
+				console.log(arr);
+			
+			}
+			getListWithDLR()
+			// 把这个对象中所有的名字以“中序遍历”的方式全部输出到console中
+			function getListWithLDR() {
+				var arr = [];
+				var midOrder = function (node){
+					if(node){
+						midOrder(node.left);
+						arr.push(node.name);
+						midOrder(node.right);
+					}
+					
+				}
+				midOrder(tree);
+				console.log(arr);			
+			}
+			getListWithLDR() 
+			// 把这个对象中所有的名字以“后序遍历”的方式全部输出到console中
+			function getListWithLRD() {
+				var arr = [];
+				var midOrder = function (node){
+					if(node){
+						midOrder(node.left);
+						midOrder(node.right);
+						arr.push(node.name);
+					}
+					
+				}
+				midOrder(tree);
+				console.log(arr);
+			}
+			getListWithLRD()
+		</script>
+	</body>
+</html>

@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>数字练习</title>
+	</head>
+	<body>
+		<div>
+		    <label>Number A:<input id="radio-a" type="radio" name="math-obj" value="a"></label><input id="num-a" type="text">
+		    <label>Number B:<input id="radio-b" type="radio" name="math-obj" value="b"></label><input id="num-b" type="text">
+		</div>
+		<div>
+		    <button>判断当前选中的输入框输入内容是否为数字</button>
+		    <button>把 A 四舍五入为 B 个小数位数的数字</button>
+		    <button>当前选中数字的绝对值</button>
+		    <button>对当前选中的数字进行上舍入</button>
+		    <button>对当前选中的数字进行下舍入</button>
+		    <button>把当前选中的数字四舍五入为最接近的整数</button>
+		    <button>返回 A 和 B 中的最高值</button>
+		    <button>返回 A 和 B 中的最低值</button>        
+		</div>
+		<p id="result"></p>
+		<script src="js/envent.js"></script>
+		<script>
+			var p = document.getElementById("result");
+			//判断当前选中的输入框输入内容是否为数字
+			function isnum(){
+				var text = selected();
+				//判断输入框内是否是数字
+				if(checkDec(text)){
+					p.innerHTML = "输入正确";
+				}else{
+					p.innerHTML = "输入有误，请输入数字";
+				}
+			}
+			//把A四舍五入为B个小数位数的数字
+			function getRound(){
+				var numa = document.getElementById("num-a").value;
+				var numb = document.getElementById("num-b").value;
+				if(!checkDec(numa) || !checkInt(numb)){
+					console.log("请在输入框中输入数字");
+				}
+				numa = new Number(numa);
+				count = Number(numb)
+				numa = numa.toFixed(count);
+				p.innerHTML = event.target.innerHTML + numa;
+			}
+			//根据传入的Math函数计算
+			function compute(fn){
+				consoleError();
+				var text = selected();
+				var num = fn(text);
+				p.innerHTML = event.target.innerHTML + num;
+			}
+			
+			function compare(fn){
+				var numa = document.getElementById("num-a").value;
+				var numb = document.getElementById("num-b").value;
+				if(!checkDec(numa) || !checkDec(numb)){
+					console.log("请在输入框中输入数字");
+				}
+				var num = fn(numa,numb);
+				p.innerHTML = event.target.innerHTML + num;
+			}
+			
+			// 判断是否是整数
+			function checkInt(num){
+				var re = /^\d+$/;
+				if(re.test(num)){
+					return true;
+				}else {
+					return false;
+				}
+			}
+			// 判断是否是实数
+			function checkDec(num){
+				var re = /^(\-|\+)?\d+(\.\d+)?$/;
+				if(re.test(num)){
+					return true;
+				}else {
+					return false;
+				}
+			}
+			
+			//取出当前选中的数字
+			function selected(){
+				var list = document.getElementsByName("math-obj");
+				for(var i = 0; i < list.length; i++){
+					if(list[i].checked){
+						var text = document.getElementById("num-"+list[i].value).value;
+						return text;
+					}
+				}
+			}
+			//判断数字是否是实数,报错在控制台
+			function consoleError(){
+				var text = selected();
+				if(checkDec(text)){
+					console.log("输入正确");
+				}else{
+					console.log("请在输入框中输入数字");
+				}
+			}
+			
+			//给button加id,并绑定点击事件,利用事件委托机制进行绑定
+			var but = document.getElementsByTagName("button");
+			var btnparent = but[0].parentNode;
+			EventUtil.addHandler(btnparent,"click",function(event){
+				event = EventUtil.getEvent(event);
+				var target = EventUtil.getTarget(event);
+				
+				switch(target){
+					case but[0]:
+						isnum();
+						break;
+					case but[1]:
+						getRound();
+						break;
+					case but[2]:
+						compute(Math.abs);
+						break;
+					case but[3]:
+						compute(Math.ceil);
+						break;
+					case but[4]:
+						compute(Math.floor);
+						break;
+					case but[5]:
+					
+						compute(Math.round);
+						break;
+					case but[6]:
+						compare(Math.max);
+						break;
+					case but[7]:
+						compare(Math.min);
+						break;
+				}
+			});
+			
+			// 另一种绑定事件方法
+			/* but[0].addEventListener("click",isnum);
+			but[1].addEventListener("click",getRound);
+			but[2].addEventListener("click",function(){
+				compute(Math.abs);
+			});
+			but[3].addEventListener("click",function(){
+				compute(Math.ceil);
+			});
+			but[4].addEventListener("click",function(){
+				compute(Math.floor);
+			});
+			but[5].addEventListener("click",function(){
+				compute(Math.round);
+			});
+			but[6].addEventListener("click",function(){
+				compare(Math.max);
+			});
+			but[7].addEventListener("click",function(){
+				compare(Math.min);
+			}); */
+			
+		</script>
+		<script src="js/envent.js"></script>
+	</body>
+</html>
