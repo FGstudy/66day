@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>日期三级联动</title>
+	</head>
+	<body>
+		<select id="year-select">
+		    <option value="">请选择年</option>
+		</select>
+		
+		<select id="month-select">
+		    <option value="">请选择月</option>
+		</select>
+		
+		<select id="day-select">
+		    <option value="">请选择日</option>
+		</select>
+		
+		<select id="hour-select">
+		    <option value="">请选择小时</option>
+		</select>
+		
+		<select id="minite-select">
+		    <option value="">请选择分</option>
+		</select>
+		
+		<select id="second-select">
+		    <option value="">请选择秒</option>
+		</select>
+		
+		<p id="result-wrapper">现在距离 2001年1月1日星期X HH:MM:SS 还有 X 天 X 小时 X 分 X 秒</p>
+		<script>
+			window.onload = function (){
+				yearSel();
+				monthSel();
+				hourSel();
+				minuteSel();
+				
+			}
+			
+			//获取元素
+			function getEle(str){
+				return document.getElementById(str+"-select");
+			}
+			//生成年下拉列表
+			function yearSel(){
+				var now = new Date();
+				var datum = now.getFullYear();
+				for(var i = (datum - 50); i < (datum + 50); i++){
+					getEle("year").options.add(new Option(" " + i + "年",i));
+				}
+			}
+			
+			//生成月下拉列表
+			function monthSel(){
+				for(var i = 1; i <= 12; i++){
+					getEle("month").options.add(new Option(" " + i + "月",i));
+				}
+			}
+			
+			//生成日下拉列表
+			function daySel(yy,mm){
+				var num = setDay(yy,mm)
+				for(var i = 1; i <= num;i++){
+					getEle("day").options.add(new Option(" " + i + "日",i));
+				}
+			}
+			
+			
+			//生成小时下拉列表
+			function hourSel(){
+				for(var i = 0; i <= 23; i++){
+					getEle("hour").options.add(new Option(" " + i + "时",i));
+				}
+			}
+			
+			//生成分钟下拉列表
+			//生成秒下拉列表
+			function minuteSel(){
+				for(var i = 0; i <= 59; i++){
+					getEle("minite").options.add(new Option(" " + i + "分",i));
+					getEle("second").options.add(new Option(" " + i + "秒",i));
+				}
+			}
+			
+			//判断是否是平年
+			function isRun(num){
+				return (num % 400 == 0)||(num % 4 == 0)&&(num % 100 != 0);
+			}
+			
+			//根据年份和月份修改天数
+			function setDay(year,month){
+				var numa = 31;
+				if(month == 2){
+					numa = 28;
+					if( isRun(year)){
+						numa = 29;
+					}
+					
+				} else if (month == 4 || month == 6|| month == 9|| month == 11){
+					numa = 30;
+				}else {
+					numa = 31;
+				}
+				return numa ;
+			}
+			
+			//给所有的多选框注册事件
+			var year = getEle("year"),
+				month = getEle("month"),
+				day = getEle("day"),
+				hour = getEle("hour"),
+				minite = getEle("minite"),
+				second = getEle("second");
+			
+			year.addEventListener("change",function(){
+				month.innerHTML = null;
+				day.innerHTML = null;
+				monthSel();
+				daySel(year.value,month.value);
+				
+			}) ;
+			year.addEventListener("click",setResult)
+			
+			month.addEventListener("change",function(){
+				day.innerHTML = null;
+				daySel(year.value,month.value);
+				
+			}) ;
+			month.addEventListener("click",setResult)
+			
+			
+			day.onclick = function (){
+				setResult();
+			}
+			
+			hour.onclick = function (){
+				setResult();
+			}
+			minite.onclick = function (){
+				setResult();
+			}
+			second.onclick = function (){
+				setResult();
+			}
+			
+			var p = document.getElementById("result-wrapper");
+			//设置p的显示
+			function setResult(){
+				var now = Date.now();
+				var selday =Date.UTC(year.value,month.value-1,day.value,hour.value,minite.value,second.value);
+				var differ = now - selday;
+				var differText = MillisecondToDate(differ);
+				if(differ < 0){
+					differText = MillisecondToDate( Math.abs(differ));
+				}
+				var wday = week(selday);
+				var dateText = year.value + "年" + month.value + "月" + day.value + "日" + wday;
+				if(differ > 0) {
+					p.innerHTML = "现在距离"+ dateText + "已经过去" + differText;
+				}else {
+					p.innerHTML = "现在距离"+ dateText + "还有" + differText;
+				}
+			}
+			
+			// 传入毫秒 返回时分秒
+			function MillisecondToDate(ms) {
+				var days = parseInt(ms / ( 1000 * 60 * 60 * 24));
+				var hours = parseInt((ms % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+				var minutes = parseInt((ms % (1000 * 60 * 60)) / (1000 * 60));
+				 var seconds = (ms % (1000 * 60)) / 1000;
+				 return days + " 天 " + hours + " 小时 " + minutes + " 分钟 " + seconds + " 秒 ";
+			}
+			//传入毫秒,返回星期几
+			function week (day){
+				var weekDay = ["星期天", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六"];
+				day = new Date(day)
+				return weekDay[day.getDay()];
+			}
+			
+		</script>
+	</body>
+</html>

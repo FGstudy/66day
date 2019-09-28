@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>时间</title>
+	</head>
+	<body>
+		<p id="showtime"></p>
+		<script>
+			var p =document.getElementById("showtime");
+			var p1 = document.createElement("p");
+			p.parentNode.appendChild(p1);
+			setInterval(function(){
+				var now = new Date();
+				showTime(now)
+				showOther(now)
+			},1000);
+			
+			function showTime(time){
+				var year = time.getFullYear() + "年",
+					month = fill(time.getMonth() + 1) + "月",
+					date = fill(time.getDate()) + "日",
+					day = weekday(time,"cn"),
+					hour = fill(time.getHours()) +":",
+					minute = fill(time.getMinutes()) +":",
+					second = fill(time.getSeconds()) ;
+				p.innerHTML = "现在是北京时间" + year + month + date + day + hour + minute + second;
+			}
+			
+			function showOther(time){
+				var year = time.getFullYear() + "-",
+					month = fill(time.getMonth() + 1) + "-",
+					date = fill(time.getDate()) + " ",
+					day = weekday(time,"en")+ " ",
+					hour = fill(judgHour(time)) +":",
+					minute = fill(time.getMinutes()) +":",
+					second = fill(time.getSeconds()),
+					period = judgPeriod(time);
+					
+				p1.innerHTML = "现在是北京时间" + year + month + date + day + hour + minute + second + period;
+			}
+			
+			
+			function weekday(time,lan){
+				if(time instanceof Date){
+					if(lan == "cn"){
+						var arr = ["星期日","星期一","星期二","星期三","星期四","星期五","星期六"];
+					} else if (lan == "en") {
+						var arr = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saterday"];
+					}
+					
+				var index = time.getDay();
+				return arr[index];
+				} else{
+					console.log("日期有误");
+				}
+			}
+			
+			function  fill(num){
+				if(num < 10){
+					num = "0" + num;
+					return num;
+				}
+				return num ;
+			}
+			
+			function judgPeriod(time){
+				var hour = time.getHours();
+				return hour >= 12?"PM":"AM";
+			}
+			
+			function judgHour(time){
+				var hour = time.getHours();
+				return hour >= 12?hour-12:hour;
+			}
+			
+		</script>
+	</body>
+</html>
